@@ -1,0 +1,33 @@
+.container {
+  height: 100%;
+  background-color: hsl(180, 52%, 96%);
+}
+.header-container {
+  position: relative;
+  height: 166px;
+  overflow: hidden;
+}
+.header {
+  position: absolute;
+  width: 100%;
+  height: 166px;
+  background-color: hsl(180, 29%, 50%);
+}
+.profile {
+  width: 93px;
+  height: auto;
+}
+.job-container {
+  padding: 77px 175px;
+  display: flex;
+}
+.job {
+  display: flex;
+  width: 100%;
+  padding: 33px 35px;
+  border-left: 5px solid hsl(180, 29%, 50%);
+  border-radius: 5px;
+}
+.left {
+  display: flex;
+}
