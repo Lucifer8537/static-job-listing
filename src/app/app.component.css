@@ -24,10 +24,64 @@
 .job {
   display: flex;
   width: 100%;
-  padding: 33px 35px;
+  padding: 33px 43px 33px 35px;
   border-left: 5px solid hsl(180, 29%, 50%);
   border-radius: 5px;
+  background-color: white;
+  box-shadow: 8px 8px 50px -30px hsl(180, 29%, 50%);
+  justify-content: space-between;
+  align-items: center;
 }
 .left {
   display: flex;
+  gap: 25px;
+}
+.job-title-container {
+  display: flex;
+  font-size: 20px;
+  color: hsl(180, 29%, 50%);
+  font-weight: 500;
+  align-items: center;
+}
+.title {
+  margin-right: 18px;
+}
+.new {
+  color: white;
+  background-color: hsl(180, 29%, 50%);
+  padding: 7px 8px;
+  font-size: 15px;
+  border-radius: 25px;
+  margin-right: 10px;
+}
+.featured {
+  color: white;
+  background-color: hsl(180, 14%, 20%);
+  padding: 7px 8px;
+  font-size: 15px;
+  border-radius: 25px;
+}
+.job-title {
+  margin: 12px 0px;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  color: hsl(180, 14%, 20%);
+}
+.job-details {
+  display: flex;
+  gap: 18px;
+  font-size: 20px;
+  color: hsl(180, 8%, 52%);
+}
+.right {
+  display: flex;
+  gap: 21px;
+}
+.tags {
+  background-color: hsl(180, 52%, 96%);
+  color: hsl(180, 29%, 50%);
+  padding: 11px 7px 7px 7px;
+  font-size: 17px;
+  font-weight: 700;
 }
