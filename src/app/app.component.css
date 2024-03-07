@@ -15,22 +15,26 @@
 }
 .profile {
   width: 93px;
-  height: auto;
+  height: fit-content;
 }
 .job-container {
   padding: 77px 175px;
-  display: flex;
+  display: grid;
+  gap: 27px;
+  background-color: hsl(180, 52%, 96%);
 }
 .job {
   display: flex;
   width: 100%;
   padding: 33px 43px 33px 35px;
-  border-left: 5px solid hsl(180, 29%, 50%);
   border-radius: 5px;
   background-color: white;
   box-shadow: 8px 8px 50px -30px hsl(180, 29%, 50%);
   justify-content: space-between;
   align-items: center;
+}
+.left-border {
+  border-left: 5px solid hsl(180, 29%, 50%);
 }
 .left {
   display: flex;
@@ -42,6 +46,7 @@
   color: hsl(180, 29%, 50%);
   font-weight: 500;
   align-items: center;
+  flex-wrap: wrap;
 }
 .title {
   margin-right: 18px;
@@ -73,10 +78,12 @@
   gap: 18px;
   font-size: 20px;
   color: hsl(180, 8%, 52%);
+  flex-wrap: wrap;
 }
 .right {
   display: flex;
   gap: 21px;
+  flex-wrap: wrap;
 }
 .tags {
   background-color: hsl(180, 52%, 96%);

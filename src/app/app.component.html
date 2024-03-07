@@ -4,31 +4,35 @@
     <img src="../assets/bg-header-desktop.svg" alt="" class="header" />
   </div>
   <div class="job-container">
-    <div class="job">
+    <div
+      class="job"
+      [class.left-border]="job.featured"
+      *ngFor="let job of jobslist"
+    >
       <div class="left">
-        <img src="../assets/photosnap.svg" alt="photosnap" class="profile" />
+        <img src="{{ job.img }}" alt="photosnap" class="profile" />
         <div class="job-info">
           <div class="job-title-container">
-            <span class="title">Photosnap</span>
-            <div class="new"><span>NEW!</span></div>
-            <div class="featured"><span>FEATURED</span></div>
+            <span class="title">{{ job.company }}</span>
+            <div class="new" *ngIf="job.new"><span>NEW!</span></div>
+            <div class="featured" *ngIf="job.featured">
+              <span>FEATURED</span>
+            </div>
           </div>
-          <div class="job-title">Senior Frontend Developer</div>
+          <div class="job-title">{{ job.title }}</div>
           <div class="job-details">
-            <span>1d ago</span>
+            <span>{{ job.postedOn }}</span>
             <span class="dot">&middot;</span>
-            <span>Full Time</span>
+            <span>{{ job.time }}</span>
             <span class="dot">&middot;</span>
-            <span>USA only</span>
+            <span>{{ job.location }}</span>
           </div>
         </div>
       </div>
       <div class="right">
-        <div class="tags">Frontend</div>
-        <div class="tags">Senior</div>
-        <div class="tags">HTML</div>
-        <div class="tags">CSS</div>
-        <div class="tags">JavaScript</div>
+        <ng-container *ngFor="let t of job.tags">
+          <div class="tags">{{ t }}</div>
+        </ng-container>
       </div>
     </div>
   </div>
