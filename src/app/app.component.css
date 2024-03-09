@@ -25,7 +25,7 @@
 }
 .job {
   display: flex;
-  width: 100%;
+  width: auto;
   padding: 33px 43px 33px 35px;
   border-radius: 5px;
   background-color: white;
@@ -85,10 +85,71 @@
   gap: 21px;
   flex-wrap: wrap;
 }
-.tags {
+.tags,
+.filTags {
   background-color: hsl(180, 52%, 96%);
   color: hsl(180, 29%, 50%);
   padding: 11px 7px 7px 7px;
   font-size: 17px;
   font-weight: 700;
+  border-radius: 5px;
+}
+.filTags {
+  border-radius: 5px 0px 0px 5px;
+}
+.filter-container {
+  position: absolute;
+  top: 27%;
+  left: 0;
+  background: white;
+  box-shadow: 8px 8px 50px -20px hsl(180, 29%, 50%);
+  padding: 20px 45px;
+  display: flex;
+  width: -webkit-fill-available;
+  margin: 0px 175px;
+  flex-wrap: wrap;
+  transform: translateY(-78%);
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.filter {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.filtags-container {
+  display: flex;
+  align-items: center;
+}
+.cross {
+  background-color: hsl(180, 29%, 50%);
+  padding: 10px 10px;
+  border-radius: 0px 5px 5px 0px;
+}
+.clear {
+  color: hsl(180, 29%, 50%);
+  font-size: 18px;
+  font-weight: 600;
+}
+@media (min-width: 750px) {
+  .job-title,
+  .tags,
+  .cross,
+  .clear {
+    cursor: pointer;
+  }
+  .job-title:hover {
+    color: hsl(180, 29%, 50%);
+  }
+  .tags:hover {
+    background-color: hsl(180, 29%, 50%);
+    color: white;
+  }
+  .cross:hover {
+    background-color: hsl(180, 14%, 20%);
+  }
+  .clear:hover {
+    text-decoration: underline;
+  }
 }

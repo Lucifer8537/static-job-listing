@@ -3,11 +3,26 @@
   <div class="header-container">
     <img src="../assets/bg-header-desktop.svg" alt="" class="header" />
   </div>
+
   <div class="job-container">
+    <div class="filter-container" *ngIf="filterTags.length">
+      <div class="filter">
+        <div class="filtags-container" *ngFor="let filter of filterTags">
+          <div class="filTags">{{ filter }}</div>
+          <img
+            src="../assets/icon-remove.svg"
+            alt="remove"
+            class="cross"
+            (click)="onClickCross(filter)"
+          />
+        </div>
+      </div>
+      <div class="clear" (click)="onClickClear()">clear</div>
+    </div>
     <div
       class="job"
       [class.left-border]="job.featured"
-      *ngFor="let job of jobslist"
+      *ngFor="let job of filteredList"
     >
       <div class="left">
         <img src="{{ job.img }}" alt="photosnap" class="profile" />
@@ -31,7 +46,7 @@
       </div>
       <div class="right">
         <ng-container *ngFor="let t of job.tags">
-          <div class="tags">{{ t }}</div>
+          <div class="tags" (click)="onAddedTagsFilter(t)">{{ t }}</div>
         </ng-container>
       </div>
     </div>

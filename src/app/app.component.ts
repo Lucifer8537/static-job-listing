@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 interface jobs {
   img: string;
   company: string;
@@ -15,7 +15,7 @@ interface jobs {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   jobslist: jobs[] = [
     {
       img: '../assets/photosnap.svg',
@@ -128,4 +128,40 @@ export class AppComponent {
       tags: ['Frontend', 'Junior', 'React', 'Sass', 'JavaScript'],
     },
   ];
+  filteredList: jobs[] = [];
+  filterTags: string[] = [];
+
+  ngOnInit(): void {
+    this.onClickClear();
+  }
+
+  onClickClear = () => {
+    this.filteredList = this.jobslist;
+    this.filterTags = [];
+  };
+
+  onAddedTagsFilter = (t: string) => {
+    if (this.filterTags.includes(t)) return;
+    this.filterTags.push(t);
+    this.filteredList = this.filteredList.filter(
+      (job) => job && job.tags.includes(t)
+    );
+  };
+
+  onClickCross = (filter: string) => {
+    if (this.filterTags.includes(filter)) {
+      this.filterTags = this.filterTags.filter(
+        (fill) => fill && fill !== filter
+      );
+
+      if (this.filterTags.length === 0) this.filteredList = this.jobslist;
+      else
+        this.filteredList = this.jobslist.filter(
+          (fill) => fill && this.isFill(fill)
+        );
+    }
+  };
+
+  isFill = (fill: jobs): boolean =>
+    fill.tags.filter((tag) => tag && this.filterTags.includes(tag)).length > 0;
 }
