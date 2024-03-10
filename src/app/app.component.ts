@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  HostListener,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 interface jobs {
   img: string;
   company: string;
@@ -16,6 +23,8 @@ interface jobs {
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  jobContainer!: ElementRef<HTMLInputElement>;
+  addStyle = false;
   jobslist: jobs[] = [
     {
       img: '../assets/photosnap.svg',
@@ -130,17 +139,29 @@ export class AppComponent implements OnInit {
   ];
   filteredList: jobs[] = [];
   filterTags: string[] = [];
+  mobileView!: boolean;
+  @HostListener('window:resize', ['$event'])
+  onResize = () => {
+    if (window.innerWidth < 750 || window.outerWidth < 750) {
+      this.mobileView = true;
+    } else {
+      this.mobileView = false;
+    }
+  };
 
   ngOnInit(): void {
+    this.onResize();
     this.onClickClear();
   }
 
   onClickClear = () => {
     this.filteredList = this.jobslist;
     this.filterTags = [];
+    this.addStyle = false;
   };
 
   onAddedTagsFilter = (t: string) => {
+    if (this.filterTags.length === 0) this.addStyle = true;
     if (this.filterTags.includes(t)) return;
     this.filterTags.push(t);
     this.filteredList = this.filteredList.filter(
@@ -154,8 +175,10 @@ export class AppComponent implements OnInit {
         (fill) => fill && fill !== filter
       );
 
-      if (this.filterTags.length === 0) this.filteredList = this.jobslist;
-      else
+      if (this.filterTags.length === 0) {
+        this.filteredList = this.jobslist;
+        this.addStyle = false;
+      } else
         this.filteredList = this.jobslist.filter(
           (fill) => fill && this.isFill(fill)
         );

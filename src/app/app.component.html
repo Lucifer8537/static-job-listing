@@ -1,10 +1,24 @@
 <div class="container">
   <!-- <div class="header-bg"></div> -->
   <div class="header-container">
-    <img src="../assets/bg-header-desktop.svg" alt="" class="header" />
+    <img
+      *ngIf="!mobileView"
+      src="../assets/bg-header-desktop.svg"
+      alt=""
+      class="header"
+    />
+    <img
+      *ngIf="mobileView"
+      src="../assets/bg-header-mobile.svg"
+      alt=""
+      class="header"
+    />
   </div>
 
-  <div class="job-container">
+  <div
+    class="job-container"
+    [ngStyle]="{ 'margin-top': addStyle ? '15%' : '' }"
+  >
     <div class="filter-container" *ngIf="filterTags.length">
       <div class="filter">
         <div class="filtags-container" *ngFor="let filter of filterTags">
@@ -44,6 +58,7 @@
           </div>
         </div>
       </div>
+      <div class="line" *ngIf="mobileView"></div>
       <div class="right">
         <ng-container *ngFor="let t of job.tags">
           <div class="tags" (click)="onAddedTagsFilter(t)">{{ t }}</div>
