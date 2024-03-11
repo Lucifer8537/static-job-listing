@@ -17,7 +17,7 @@
 
   <div
     class="job-container"
-    [ngStyle]="{ 'margin-top': addStyle ? '15%' : '' }"
+    [ngStyle]="{ 'margin-top': addStyle && mobileView ? '15%' : '' }"
   >
     <div class="filter-container" *ngIf="filterTags.length">
       <div class="filter">
